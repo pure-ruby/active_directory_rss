@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACE,qBAAK,GACH,eAAe,EAAE,QAAQ;AACzB,wBAAE,GACA,MAAM,EAAE,cAAc;AACxB,kCAAY,GACV,UAAU,EAAE,OAAO;AACrB,gCAAU,GACR,UAAU,EAAE,OAAO;AACrB,gCAAU,GACR,UAAU,EAAE,OAAO",
+"sources": ["sass/empls_birthday.sass"],
+"names": [],
+"file": "empls_birthday.css"
+}

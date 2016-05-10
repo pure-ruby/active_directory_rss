@@ -1,0 +1,10 @@
+#ad_index .new_user { background-color: #bfff80; }
+#ad_index .new_group { background-color: #e5ffcc; }
+#ad_index .rem_user { background-color: #ff6666; }
+#ad_index .rem_group { background-color: #ffcccc; }
+#ad_index .highlighted { background: yellow; }
+#ad_index .toggle_hl_user_on { background: #e8e8e8; }
+#ad_index .toggle_hl_user_off { background: #f8f8f8; }
+#ad_index .ll { padding: 0 10px 0 10px; }
+
+/*# sourceMappingURL=ad_index.css.map */

@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACE,wBAAU,GACR,gBAAgB,EAAE,IAAI;AACxB,0BAAY,GACV,gBAAgB,EAAE,IAAI;AACxB,4BAAc,GACZ,gBAAgB,EAAE,MAAM;AAC1B,mBAAK,GACH,eAAe,EAAE,QAAQ;AAEvB,yBAAE,GACA,SAAS,EAAE,IAAI,EACf,MAAM,EAAE,cAAc",
+"sources": ["sass/empls_4_diff.sass"],
+"names": [],
+"file": "empls_4_diff.css"
+}

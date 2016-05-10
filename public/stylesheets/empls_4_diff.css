@@ -1,0 +1,7 @@
+#empls_4_diff .highlight { background-color: #DDD; }
+#empls_4_diff .highlight_2 { background-color: blue; }
+#empls_4_diff .highlight_new { background-color: yellow; }
+#empls_4_diff table { border-collapse: collapse; }
+#empls_4_diff table tr td { font-size: 10px; border: 1px solid gray; }
+
+/*# sourceMappingURL=empls_4_diff.css.map */

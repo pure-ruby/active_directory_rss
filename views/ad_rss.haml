@@ -1,0 +1,21 @@
+- cd_st = "<![CDATA["
+- cd_end = "]]>"
+!!! XML
+%rss{:version => "2.0", "xmlns:atom" => "http://www.w3.org/2005/Atom"} 
+  %channel
+    %title ad changes
+    %link http://tmn-ws-uvat03:8888/ruby/rss/rss.rb
+    %description ad changes
+    -# %updated= Time.now.rfc822
+    %lastBuildDate= Time.now.rfc822
+    %ttl 30
+    - get_history.group_by{|k| k['DATE_TO_GROUP_FRMT']}.each do |k,v|
+      %item
+        %title= DateTime.parse(k+" "+T_ZONE).rfc822[0..-7]
+        %description
+          = cd_st
+          = haml :_ad_for_rss, locals: { data: v }
+          = cd_end
+        -# %updated= DateTime.parse(k+" "+T_ZONE).rfc822
+        %guid{"isPermaLink" => "false"}= DateTime.parse(k+" "+T_ZONE).rfc822
+        %pubDate= DateTime.parse(k+" "+T_ZONE).rfc822

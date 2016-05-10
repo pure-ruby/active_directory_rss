@@ -1,0 +1,27 @@
+- NAME_L = File.basename(__FILE__, File.extname(__FILE__))
+- @head = { \
+-   meta: [{'http-equiv' => 'Content-Type', content: 'text/html'}, {'http-equiv' => 'content-type', content: 'text/html;charset=utf-8'}, {'http-equiv' => 'cache-control', content: 'max-age=0'}, {'http-equiv' => 'cache-control', content: 'no-cache'}, {'http-equiv' => 'expires', content: '0'}, {'http-equiv' => 'expires', content: 'Tue, 01 Jan 1980 1:00:00 GMT'}, {'http-equiv' => 'pragma', content: 'no-cache'}]}
+- actions = {'++' => 'new_user', '+' => 'new_group', '--' => 'rem_user', '-' => 'rem_group'}
+
+ou=users, ou=tyumen, dc=corp, dc=tnk-bp, dc=ru<br>
+= actions.to_a.to_s
+<br><br>
+%b [ #{(Date.today-2).strftime("%F")} .. #{Time.now.strftime("%F %T")} ]
+<br><br>
+%div#div_form updated #{get_last_update_minute_[0][0]} min. ago
+%table#id_filterable.filterable{cellspacing: 0}
+  %tr
+    %th *
+    %th user
+    %th group
+    %th date
+  - toggle_hl_user = true
+  - rr = get_history
+  - rr.each_with_index do |x,i|
+    %tr{class: actions[x['ACTION_']]}
+      %td{align: 'center'}= x['ACTION_']
+      %td.ll{class: toggle_hl_user ? 'toggle_hl_user_on' : 'toggle_hl_user_off'}= x['LOGIN_']
+      %td.ll{class: toggle_hl_user ? 'toggle_hl_user_on' : 'toggle_hl_user_off'}= x['GROUP_']
+      %td= x['DATE_TO_GROUP_FRMT']
+      - toggle_hl_user = !toggle_hl_user if rr[i+1] && (rr[i+1]['LOGIN_'] != rr[i]['LOGIN_'])
+%script{src: "/filterTable.js"}

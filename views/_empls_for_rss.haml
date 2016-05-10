@@ -1,0 +1,32 @@
+- class_ = {"new" => "ico-gr", "rem" => "ico-re", "upd" => "ico-or"}
+- action_ = {"new" => "&rarr;", "rem" => "&larr;", "upd" => "&#8634;"}
+!!!
+%html
+  %head
+    :css
+      table {font-family: tahoma; font-size: 10px; width1:800px;}
+      td {border-bottom:1px dotted #342d2d;}
+      .grey-tr td{background:#ebebeb;}
+      .ico-gr {font-size:18px;color:#4d7801;font-weight:bold;}
+      .ico-re {font-size:18px;color:#a30000;font-weight:bold;}
+      .ico-or {font-size:18px;color:#ffae00;font-weight:bold;}
+      .dep {width: 500px;}
+      .dep_2 {width: 300px;}
+  %body
+    %table{cellpadding: 6, cellspacing: 0}
+      - locals[:data].each_with_index do |line,idx|
+        %tr{class: ("grey-tr" if idx%2==0)}
+          %td{class: class_[line["action"]]}= action_[line["action"]]
+          %td
+            = line["firstname_ru"]
+            <br>
+            = line["lastname_ru"]
+          %td.dep
+            %b= line["code_apnt"]
+            <br>
+            = line["code_dep"]
+          %td{class: "ico-or", width: 30}= line["code_apnt2"] ? "&#10148;" : "&nbsp;"
+          %td.dep_2
+            %b= line["code_apnt2"]
+            <br>
+            = line["code_dep2"]

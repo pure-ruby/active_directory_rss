@@ -1,0 +1,48 @@
+!!!
+%html
+  %head
+    %title !!!
+    - @head.each do |key,value|
+      - case key
+      - when :meta
+        - value.each do |item| 
+          %meta{item}
+      - when :css_link
+        - value.each do |item| 
+          %link{item}
+      - when :script_link
+        - value.each do |item| 
+          %script{item}
+    - end if @head
+    %link{type: "text/css", rel: "stylesheet", href: "/stylesheets/layout.css"}
+    %link{type: "text/css", rel: "stylesheet", href: "/stylesheets/#{NAME_L}.css"}
+  %body
+    #wrapper        
+      #navigation
+        <p>!!!</p>
+      #leftcolumn
+        %ul
+          %li
+            %a{href: "/"} Main
+        %ul
+          %li
+            %a{href: "/rss"} AD rss
+        %ul
+          %li
+            %a{href: "/empls_move.rss"} Empls move rss
+        %ul
+          %li
+            %a{href: "/empls_tree"} Empls tree
+        %ul
+          %li
+            %a{href: "/empls_4_diff"} Empls diff
+        %ul
+          %li
+            %a{href: "/empls_anvrs"} Empls anvrs
+        %ul
+          %li
+            %a{href: "/empls_birthday"} Empls birthday
+      #content
+        %div{id: NAME_L}
+          = yield
+

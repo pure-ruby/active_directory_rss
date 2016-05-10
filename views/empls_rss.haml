@@ -1,0 +1,20 @@
+- cd_st = "<![CDATA["
+- cd_end = "]]>"
+!!! XML
+%rss{:version => "2.0", "xmlns:atom" => "http://www.w3.org/2005/Atom"} 
+  %channel
+    %title empls move
+    %link http://uvat:8888/empls_rss
+    %description empls move
+    %updated= Time.now.rfc822
+    %lastBuildDate= Time.now.rfc822
+    %ttl 60
+    - get_empls_move_.group_by{|k| k['DATE_FOR_GROUP']}.each do |k,v|
+      %item
+        %title= DateTime.parse(k).strftime("%a, %e %b %Y")
+        %description
+          = cd_st
+          = haml :_empls_for_rss, locals: { data: v}
+          = cd_end
+        %updated= DateTime.parse(k).rfc822
+        %pubDate= DateTime.parse(k).rfc822

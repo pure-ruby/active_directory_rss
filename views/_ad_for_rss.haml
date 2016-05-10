@@ -1,0 +1,28 @@
+- actions = {'++' => 'new_user', '+' => 'new_group', '--' => 'rem_user', '-' => 'rem_group'}
+%html
+  %head
+    :css
+      .new_user {background-color: rgb(191, 255, 128);} 
+      .new_group {background-color: rgb(229, 255, 204);} 
+      .rem_user {background-color: rgb(255, 102, 102);} 
+      .rem_group {background-color: rgb(255, 204, 204);}
+      .ll {padding: 0 5px 0 5px;}
+  %body
+    %table{cellspacing: 0}
+      %tr
+        %th<
+          %font{size: 2} *
+        %th<
+          %font{size: 2} user
+        %th<
+          %font{size: 2} group
+      - toggle_hl_user = true
+      - locals[:data].each_with_index do |x,i|
+        %tr{class: actions[x['ACTION_']]}
+          %td.ll{align: 'center'}<
+            %font{size: 2}= x['ACTION_']
+          %td.ll{class: toggle_hl_user ? 'toggle_hl_user_on' : 'toggle_hl_user_off', style: toggle_hl_user ? 'background:rgb(232,232,232)' : 'background:rgb(248,248,248)'}<
+            %font{size: 2}= x['LOGIN_']
+          %td.ll{class: toggle_hl_user ? 'toggle_hl_user_on' : 'toggle_hl_user_off', style: toggle_hl_user ? 'background:rgb(232,232,232)' : 'background:rgb(248,248,248)'}<
+            %font{size: 2}= x['GROUP_']
+          - toggle_hl_user = !toggle_hl_user if locals[:data][i+1] && (locals[:data][i+1]['LOGIN_'] != locals[:data][i]['LOGIN_'])

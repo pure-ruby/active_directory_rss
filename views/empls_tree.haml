@@ -1,0 +1,65 @@
+- NAME_L = File.basename(__FILE__, File.extname(__FILE__))
+- @head = { \
+-   meta: [{'http-equiv' => 'content-type', content: 'text/html;charset=utf-8'}], \
+-   script_link: [{src: "/js_/TreeMenu.js"}]}
+
+<br>
+%button{onclick: "TreeMenu.show_all(document.getElementById('org'))"} Show All
+%button{onclick: "TreeMenu.hide_all(document.getElementById('org'))"} Hide All
+%button{onclick: "TreeMenu.reset(document.getElementById('org'));location.reload();"} Reset
+<br><br>
+%div.menu{style: "float:left;"}
+  %ul#org
+    - get_work_empls_tree_.group_by{|k| k["RANK_1"]}.each do |key, data|
+      %li
+        #{data.first["org_unit_id_1"]} #{data.first["name_1"]}
+        %ul
+          - data.group_by{|k| k["RANK_2"]}.each do |key_2, data_2|
+            %li{class: data_2.count>1 && data_2.first["type_2"]=="jp" ? "wrong" : ""}<
+              #{data_2.first["org_unit_id_2"]} #{data_2.first["name_2"]}
+              - if data_2.first["type_2"] == "jp"
+                %i= data_2.map{|n| %|[ #{n["tab_num"]} #{n["firstname_ru"]} #{n["lastname_ru"]} #{n["disabled"]} #{n["start_out"]} #{n["end_out"]} #{n["type_out"]} ]| }.join("; ")
+                / [#{data_2.first["firstname_ru"]} #{data_2.first["lastname_ru"]} / #{Date.parse(data_2.first["dt_in"]).strftime("%e %b %Y")}#{' / ' + Date.parse(data_2.first["birthday"]).strftime("%e %b") if data_2.first["birthday"]}] #{data_2.first["disabled"]}
+                - next
+              %ul
+                - data_2.group_by{|k| k["RANK_3"]}.each do |key_3, data_3|
+                  %li{class: data_3.count>1 && data_3.first["type_3"]=="jp" ? "wrong" : ""}<
+                    #{data_3.first["org_unit_id_3"]} #{data_3.first["name_3"]}
+                    - if data_3.first["type_3"] == "jp"
+                      %i= data_3.map{|n| %|[ #{n["tab_num"]} #{n["firstname_ru"]} #{n["lastname_ru"]} #{n["disabled"]} #{n["start_out"]} #{n["end_out"]} #{n["type_out"]} ]| }.join("; ")
+                      / [#{data_3.first["firstname_ru"]} #{data_3.first["lastname_ru"]} / #{Date.parse(data_3.first["dt_in"]).strftime("%e %b %Y")}#{' / ' + Date.parse(data_3.first["birthday"]).strftime("%e %b") if data_3.first["birthday"]}] #{data_3.first["disabled"]}
+                      - next
+                    %ul
+                      - data_3.group_by{|k| k["RANK_4"]}.each do |key_4, data_4|
+                        %li{class: data_4.count>1 && data_4.first["type_4"]=="jp" ? "wrong" : ""}<
+                          #{data_4.first["org_unit_id_4"]} #{data_4.first["name_4"]}
+                          - if data_4.first["type_4"] == "jp"
+                            %i= data_4.map{|n| %|[ #{n["tab_num"]} #{n["firstname_ru"]} #{n["lastname_ru"]} #{n["disabled"]} #{n["start_out"]} #{n["end_out"]} #{n["type_out"]} ]| }.join("; ")
+                            / [#{data_4.first["firstname_ru"]} #{data_4.first["lastname_ru"]} / #{Date.parse(data_4.first["dt_in"]).strftime("%e %b %Y")}#{' / ' + Date.parse(data_4.first["birthday"]).strftime("%e %b") if data_4.first["birthday"]}] #{data_4.first["disabled"]}
+                            - next
+                          %ul
+                            - data_4.group_by{|k| k["RANK_5"]}.each do |key_5, data_5|
+                              %li{class: data_5.count>1 && data_5.first["type_5"]=="jp" ? "wrong" : ""}<
+                                #{data_5.first["org_unit_id_5"]} #{data_5.first["name_5"]}
+                                - #FIRST???? FIXME
+                                - if data_5.first["type_5"] == "jp"
+                                  %i= data_5.map{|n| %|[ #{n["tab_num"]} #{n["firstname_ru"]} #{n["lastname_ru"]} #{n["disabled"]} #{n["start_out"]} #{n["end_out"]} #{n["type_out"]} ]| }.join("; ")
+                                  / [#{data_5.first["firstname_ru"]} #{data_5.first["lastname_ru"]} / #{Date.parse(data_5.first["dt_in"]).strftime("%e %b %Y")}#{' / ' + Date.parse(data_5.first["birthday"]).strftime("%e %b") if data_5.first["birthday"]}] #{data_5.first["disabled"]}
+                                  - next
+                                %ul
+                                  - data_5.group_by{|k| k["RANK_6"]}.each do |key_6, data_6|
+                                    %li{class: data_6.count>1 && data_6.first["type_6"]=="jp" ? "wrong" : ""}<
+                                      #{data_6.first["org_unit_id_6"]} #{data_6.first["name_6"]}
+                                      - if data_6.first["type_6"] == "jp"
+                                        %i= data_6.map{|n| %|[ #{n["tab_num"]} #{n["firstname_ru"]} #{n["lastname_ru"]} #{n["disabled"]} #{n["start_out"]} #{n["end_out"]} #{n["type_out"]} ]| }.join("; ")
+                                        / [#{data_6.first["firstname_ru"]} #{data_6.first["lastname_ru"]} / #{Date.parse(data_6.first["dt_in"]).strftime("%e %b %Y")}#{' / ' + Date.parse(data_6.first["birthday"]).strftime("%e %b") if data_6.first["birthday"]}] #{data_6.first["disabled"]}
+                                        - next
+                                      %ul
+                                        - data_6.group_by{|k| k["RANK_7"]}.each do |key_7, data_7|
+                                          %li{class: data_7.count>1 ? "wrong" : ""}<
+                                            #{data_7.first["org_unit_id_7"]} #{data_7.first["name_7"]}
+                                            %i= data_7.map{|n| %|[ #{n["tab_num"]} #{n["firstname_ru"]} #{n["lastname_ru"]} #{n["disabled"]} #{n["start_out"]} #{n["end_out"]} #{n["type_out"]} ]| }.join("; ")
+                                            / [#{data_7.first["firstname_ru"]} #{data_7.first["lastname_ru"]} / #{Date.parse(data_7.first["dt_in"]).strftime("%e %b %Y")}#{' / ' + Date.parse(data_7.first["birthday"]).strftime("%e %b") if data_7.first["birthday"]}] #{data_7.first["disabled"]}
+
+:javascript
+  make_tree_menu('org')

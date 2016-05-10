@@ -1,0 +1,78 @@
+- NAME_L = File.basename(__FILE__, File.extname(__FILE__))
+
+- toggle = false
+%table{cellspacing: 0}
+  %tr
+    %th версия
+    %th логин IAM
+    %th таб. номер
+    %th МВЗ
+    %th дата приёма
+    %th дата ув.
+    %th фамилия
+    %th имя
+    %th отч.
+    %th lastname
+    %th firstname
+    %th middlename
+    %th логин AD
+    %th disabled
+    %th комната
+    %th раб. тел.
+    %th раб. тел. доп.
+    %th мобильный
+    %th факс
+    %th должность
+    %th код. долж.
+    %th код. деп.
+    %th деп.
+    %th депп.
+    %th тип
+    %th address_id
+    %th city_id
+    %th action
+    %th code_dep_calc
+    %th dep_calc
+    %th code_apnt2
+    %th apnt2
+    %th nnn
+  - get_4_all_diff_histroy_.group_by{|k| k["login_iam"]}.each do |item, i_i|
+    - toggle = !toggle
+    - l = 0
+    - i_i.each_with_index do |i_i2,idx|
+      %tr
+        - l += 1 if i_i2["action"]!="new"
+        - t_r = DateTime.parse(i_i2["nnn"].to_s[0..-10]+" "+T_ZONE)
+        %td{class: toggle ? "highlight" : ""}= l
+        %td{class: (idx>0 ? i_i[idx-1]["login_iam"]          !=i_i[idx]["login_iam"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["login_iam"]
+        %td{class: (idx>0 ? i_i[idx-1]["tab_num"]            !=i_i[idx]["tab_num"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["tab_num"]
+        %td{class: (idx>0 ? i_i[idx-1]["mvz"]                !=i_i[idx]["mvz"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["mvz"]
+        %td{class: (idx>0 ? i_i[idx-1]["dt_in"]              !=i_i[idx]["dt_in"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["dt_in"]
+        %td{class: (idx>0 ? i_i[idx-1]["dt_out"]             !=i_i[idx]["dt_out"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["dt_out"]
+        %td{class: (idx>0 ? i_i[idx-1]["lastname_ru"]        !=i_i[idx]["lastname_ru"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["lastname_ru"]
+        %td{class: (idx>0 ? i_i[idx-1]["firstname_ru"]       !=i_i[idx]["firstname_ru"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["firstname_ru"]
+        %td{class: (idx>0 ? i_i[idx-1]["middlename_ru"]      !=i_i[idx]["middlename_ru"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["middlename_ru"]
+        %td{class: (idx>0 ? i_i[idx-1]["lastname_en"]        !=i_i[idx]["lastname_en"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["lastname_en"]
+        %td{class: (idx>0 ? i_i[idx-1]["firstname_en"]       !=i_i[idx]["firstname_en"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["firstname_en"]
+        %td{class: (idx>0 ? i_i[idx-1]["middlename_en"]      !=i_i[idx]["middlename_en"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["middlename_en"]
+        %td{class: (idx>0 ? i_i[idx-1]["login_ad"]           !=i_i[idx]["login_ad"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["login_ad"]
+        %td{class: (idx>0 ? i_i[idx-1]["disabled"]           !=i_i[idx]["disabled"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["disabled"]
+        %td{class: (idx>0 ? i_i[idx-1]["room"]               !=i_i[idx]["room"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["room"]
+        %td{class: (idx>0 ? i_i[idx-1]["phone_work"]         !=i_i[idx]["phone_work"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["phone_work"]
+        %td{class: (idx>0 ? i_i[idx-1]["phone_ext_work"]     !=i_i[idx]["phone_ext_work"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["phone_ext_work"]
+        %td{class: (idx>0 ? i_i[idx-1]["mobilephone"]        !=i_i[idx]["mobilephone"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["mobilephone"]
+        %td{class: (idx>0 ? i_i[idx-1]["fax"]                !=i_i[idx]["fax"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["fax"]
+        %td{class: (idx>0 ? i_i[idx-1]["apnt"]               !=i_i[idx]["apnt"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["apnt"]
+        %td{class: (idx>0 ? i_i[idx-1]["code_apnt"]          !=i_i[idx]["code_apnt"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["code_apnt"]
+        %td{class: (idx>0 ? i_i[idx-1]["code_dep"]           !=i_i[idx]["code_dep"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["code_dep"]
+        %td{class: (idx>0 ? i_i[idx-1]["depp"]               !=i_i[idx]["depp"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["depp"]
+        %td{class: (idx>0 ? i_i[idx-1]["dep"]                !=i_i[idx]["dep"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["dep"]
+        %td{class: (idx>0 ? i_i[idx-1]["empl_type"]          !=i_i[idx]["empl_type"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["empl_type"]
+        %td{class: (idx>0 ? i_i[idx-1]["address_id"]         !=i_i[idx]["address_id"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["address_id"]
+        %td{class: (idx>0 ? i_i[idx-1]["city_id"]            !=i_i[idx]["city_id"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["city_id"]
+        %td{class: (idx>0 ? i_i[idx-1]["action"]             !=i_i[idx]["action"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["action"] || "current"
+        %td{class: (idx>0 ? i_i[idx-1]["code_dep_calculate"] !=i_i[idx]["code_dep_calculate"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["code_dep_calculate"]
+        %td{class: (idx>0 ? i_i[idx-1]["dep_calculate"]      !=i_i[idx]["dep_calculate"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["dep_calculate"]
+        %td{class: (idx>0 ? i_i[idx-1]["code_apnt2"]         !=i_i[idx]["code_apnt2"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["code_apnt2"]
+        %td{class: (idx>0 ? i_i[idx-1]["apnt2"]              !=i_i[idx]["apnt2"] : nil) ? (t_r>DateTime.now-0.5 && t_r<DateTime.now+100 ? "highlight_new" : "highlight_2" ) : (toggle ? "highlight" : "")}= i_i2["apnt2"]
+        %td= t_r

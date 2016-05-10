@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACE,kBAAK,GACH,eAAe,EAAE,QAAQ;AACzB,qBAAE,GACA,MAAM,EAAE,cAAc;AACxB,+BAAY,GACV,UAAU,EAAE,OAAO;AACrB,6BAAU,GACR,UAAU,EAAE,OAAO;AACrB,6BAAU,GACR,UAAU,EAAE,OAAO",
+"sources": ["sass/empls_anvrs.sass"],
+"names": [],
+"file": "empls_anvrs.css"
+}

@@ -1,0 +1,14 @@
+body { margin: 0px; font-family: Calibri; font-size: 11px; }
+
+button { font-family: Calibri; font-size: 11px; }
+
+#wrapper { width: 100%; }
+#wrapper #navigation { float: left; height: 40px; width: 100%; background: #FFCC33; }
+#wrapper #content { float: left; background: #FFFFFF; width: 800px; padding-left: 10px; }
+#wrapper #leftcolumn { background: #33CCFF; width: 110px; float: left; padding: 10px; }
+#wrapper #leftcolumn ul { margin: 0; padding: 0; list-style-type: none; }
+#wrapper #leftcolumn ul li { display: inline; }
+#wrapper #leftcolumn ul li a:hover { text-decoration: underline; }
+#wrapper #leftcolumn ul a { text-decoration: none; color: #333; }
+
+/*# sourceMappingURL=layout.css.map */

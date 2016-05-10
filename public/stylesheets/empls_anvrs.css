@@ -1,0 +1,7 @@
+#empls_anvrs table { border-collapse: collapse; }
+#empls_anvrs table td { border: 1px solid gray; }
+#empls_anvrs table tr.bd_now td { background: #99CC99; }
+#empls_anvrs table tr.bd_d td { background: #ffcccc; }
+#empls_anvrs table tr.bd_u td { background: #e5ffcc; }
+
+/*# sourceMappingURL=empls_anvrs.css.map */

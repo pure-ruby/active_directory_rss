@@ -1,0 +1,20 @@
+- NAME_L = File.basename(__FILE__, File.extname(__FILE__))
+
+%table{cellspacing: 0}
+  %tr
+    %th имя
+    %th фамилия
+    %th долж.
+    %th пдрздл.
+    %th дата устр.
+    %th кол-во лет в кмпн. (5,10,15,20)
+    %th кол-во дней до юбл (-20..40)
+  - get_empls_anniversary_.each do |item|
+    %tr{class: case when item["diff_days"]==0; "bd_now" when item["diff_days"]>0; "bd_u" when item["diff_days"]<0; "bd_d" end}
+      %td= item["firstname_ru"]
+      %td= item["lastname_ru"]
+      %td= item["apnt"]
+      %td= item["dep"]
+      %td= DateTime.parse(item["dt_in"]).strftime("%a, %e %b %Y")
+      %td= item["diff_year"]
+      %td= item["diff_days"]

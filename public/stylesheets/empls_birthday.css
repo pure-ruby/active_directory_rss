@@ -1,0 +1,7 @@
+#empls_birthday table { border-collapse: collapse; }
+#empls_birthday table td { border: 1px solid gray; }
+#empls_birthday table tr.bd_now td { background: #99CC99; }
+#empls_birthday table tr.bd_d td { background: #ffcccc; }
+#empls_birthday table tr.bd_u td { background: #e5ffcc; }
+
+/*# sourceMappingURL=empls_birthday.css.map */
